@@ -1,6 +1,6 @@
 # react-image-skeleton
 
-> Skeleton for image
+> Skeleton for images
 
 [![NPM](https://img.shields.io/npm/v/react-image-skeleton.svg)](https://www.npmjs.com/package/react-image-skeleton) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -13,18 +13,25 @@ npm install --save react-image-skeleton
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+[...]
 
-import MyComponent from 'react-image-skeleton'
-import 'react-image-skeleton/dist/index.css'
+import ImageSkeleton from 'react-image-skeleton'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+function App () {
+  return <ImageSkeleton
+    src="URL from image"
+    alt="Alternative descriptive text"
+    height="5rem"
+  />
 }
+
+[...]
 ```
+
+## Documentation
+
+The React Image Skeleton docs are published at [https://github.com/ChristianCopa/react-image-skeleton](https://github.com/ChristianCopa/react-image-skeleton)
 
 ## License
 
-MIT © [Christian Copa](https://github.com/Christian Copa)
+MIT © [Christian Copa](https://github.com/ChristianCopa)

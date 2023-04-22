@@ -1,9 +1,64 @@
-/* add css module styles here (optional) */
+:root {
+  --loading-grey: #ededed;
+}
 
-.test {
-  margin: 2em;
-  padding: 0.5em;
-  border: 2px solid #000;
-  font-size: 2em;
-  text-align: center;
+.__component_skeleton__ {
+  background-color: #fff;
+  overflow: hidden;
+
+  width: unset;
+  height: var(--default_height_skeleton);
+
+  position: relative;
+}
+
+.__skeleton__ {
+  width: auto;
+  height: inherit;
+  background-color: var(--loading-grey);
+  background: var(--background) var(--loading-grey);
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation-duration: 1s;
+  animation-name: skeleton-anim;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  z-index: 2;
+
+  transition: var(--transition);
+  opacity: var(--opacity);
+}
+
+.__skeleton_defined__>*{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.__image__ {
+  width: 100%;
+  height: inherit;
+
+  object-fit: cover;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 1;
+}
+
+@keyframes skeleton-anim {
+  to {
+    background-position-x: -20%;
+  }
 }
