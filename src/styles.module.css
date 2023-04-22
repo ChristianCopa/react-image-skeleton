@@ -8,6 +8,7 @@
 
   width: unset;
   height: var(--default_height_skeleton);
+  min-height: var(--default_height_skeleton);
 
   position: relative;
 }
@@ -44,15 +45,13 @@
 
 .__image__ {
   width: 100%;
+  height: auto;
+
+  min-height: var(--default_height_skeleton);
+
   height: inherit;
 
   object-fit: cover;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 
   z-index: 1;
 }
