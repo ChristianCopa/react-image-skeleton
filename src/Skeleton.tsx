@@ -11,9 +11,7 @@ interface Props {
   height: string
 
   transition?: React.CSSProperties['transition']
-  background?:
-    | React.CSSProperties['background']
-    | 'linear-gradient(45deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 60%)'
+  background?: React.CSSProperties['background']
   skeleton?: JSX.Element
 }
 
@@ -40,6 +38,11 @@ const ImageSkeleton = (props: Props) => {
     [skeletonClass, setSkeletonClass]
   ] = [React.useState(''), React.useState(''), React.useState('')]
 
+  const [[propsStyle, setPropsStyle], [skeletonStyle, setSkeletonStyle]] = [
+    React.useState<React.CSSProperties>({}),
+    React.useState<React.CSSProperties>({})
+  ]
+
   const [isLoad, setIsLoad] = React.useState(false)
 
   React.useEffect(() => {
@@ -55,12 +58,25 @@ const ImageSkeleton = (props: Props) => {
       setSkeletonClass(props.skeletonProps.className)
       delete props.skeletonProps.className
     }
-  }, [])
 
+    //
+
+    if (props.props?.style) {
+      setPropsStyle(props.props.style)
+      delete props.props.style
+    }
+    if (props.skeletonProps?.style) {
+      setSkeletonStyle(props.skeletonProps.style)
+      delete props.skeletonProps.style
+    }
+  }, [])
   return (
     <div
       style={
-        { '--default_height_skeleton': props.height } as React.CSSProperties
+        {
+          '--default_height_skeleton': props.height,
+          ...propsStyle
+        } as React.CSSProperties
       }
       className={`__component_skeleton__ ${propsClass} ${style.__component_skeleton__}`}
       {...props.props}
@@ -85,7 +101,8 @@ const ImageSkeleton = (props: Props) => {
               '--opacity': isLoad ? '0' : '1',
               '--transition': props.transition
                 ? props.transition
-                : 'opacity 0.5s ease-in-out'
+                : 'opacity 0.5s ease-in-out',
+              ...skeletonStyle
             },
             className: `__skeleton__ ${skeletonClass} ${style.__skeleton__} ${style.__skeleton_defined__}`,
             ...props.skeletonProps
@@ -102,10 +119,8 @@ const ImageSkeleton = (props: Props) => {
                 : 'opacity 0.5s ease-in-out',
               '--background': props.background
                 ? props.background
-                : `linear-gradient(45deg,
-                rgba(255, 255, 255, 0) 40%,
-                rgba(255, 255, 255, 1) 50%,
-                rgba(255, 255, 255, 0) 60%)`
+                : 'linear-gradient(45deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 60%)',
+              ...skeletonStyle
             } as React.CSSProperties
           }
           className={`__skeleton__ ${skeletonClass} ${style.__skeleton__}`}
