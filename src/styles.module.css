@@ -7,7 +7,7 @@
   overflow: hidden;
 
   width: unset;
-  height: var(--default_height_skeleton);
+  height: auto;
   min-height: var(--default_height_skeleton);
 
   position: relative;
