@@ -1,5 +1,6 @@
 import * as React from 'react'
 import style from './styles.module.css'
+import { BasicLoader as BasicLoaderI } from './components/loaders/BasicLoader'
 
 interface Props {
   imageProps?: React.HTMLProps<HTMLImageElement>
@@ -132,3 +133,5 @@ const ImageSkeleton = (props: Props) => {
 }
 
 export default ImageSkeleton
+
+export const BasicLoader = BasicLoaderI
