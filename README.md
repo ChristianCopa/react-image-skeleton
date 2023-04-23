@@ -190,8 +190,7 @@ export default App
 ### Imports
 
 ```tsx
-import ImageSkeleton from 'react-image-skeleton'
-import { BasicLoader } from 'react-image-skeleton/components/loaders/BasicLoader'
+import ImageSkeleton, { BasicLoader } from 'react-image-skeleton'
 ```
 
 ---
